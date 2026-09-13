@@ -3,6 +3,7 @@ import { tariffName } from '../../data/tariffs'
 import { cn } from '../../lib/format'
 import { Button } from '../../ui/Button'
 import { Price, Tag } from '../../ui/Primitives'
+import { asset } from '../../lib/asset'
 
 /** Компактная карточка машины: результат подбора (тёмная) и «машины из статьи» (светлая) */
 export function MiniCarCard({ car, inverse, primary, badge, onLead, className }: {
@@ -17,7 +18,7 @@ export function MiniCarCard({ car, inverse, primary, badge, onLead, className }:
       className,
     )}>
       <div className="overflow-hidden rounded-1 bg-asphalt-100 sm:w-36 sm:shrink-0">
-        <img src={car.images.cover} alt={car.name} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+        <img src={asset(car.images.cover)} alt={car.name} loading="lazy" className="aspect-[4/3] w-full object-cover" />
       </div>
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-center gap-2">

@@ -21,6 +21,7 @@ import { ArticlesRows } from '../sections/ArticlesRows'
 import { FinalCta } from '../sections/FinalCta'
 import { DashList, calcFullWrap, leadForCar } from '../sections/helpers'
 import { formatNumber, formatPrice, pluralWith } from '../../lib/format'
+import { asset } from '../../lib/asset'
 
 export function C2TariffPage() {
   const { slug = '' } = useParams()
@@ -105,7 +106,7 @@ function TariffView({ tariff: t }: { tariff: Tariff }) {
               </div>
             </div>
             <div className="relative aspect-[4/3] overflow-hidden rounded-2 bg-asphalt-100">
-              <img src={hero.images.cover} alt={`${hero.name} — тариф ${t.name}`} className="h-full w-full object-cover" fetchPriority="high" />
+              <img src={asset(hero.images.cover)} alt={`${hero.name} — тариф ${t.name}`} className="h-full w-full object-cover" fetchPriority="high" />
               <div className="absolute left-3 top-3 flex gap-1.5"><Tag tone="dark">{t.name}</Tag><Tag tone="neutral">{hero.name}</Tag></div>
             </div>
           </div>
@@ -145,7 +146,7 @@ function TariffView({ tariff: t }: { tariff: Tariff }) {
           <Table
             head={['Модель', 'Аренда', 'Двигатель', 'Расход / запас хода', 'Кузов', 'Коробка', 'Сильная сторона']}
             rows={pool.map((c) => [
-              <Link key="n" to={c2.car(c.slug)} className="inline-flex items-center gap-3 transition-colors duration-fast hover:text-signal-700"><img src={c.images.cover} alt="" className="size-10 rounded-1 object-cover" loading="lazy" /><span className="whitespace-nowrap">{c.name}</span></Link>,
+              <Link key="n" to={c2.car(c.slug)} className="inline-flex items-center gap-3 transition-colors duration-fast hover:text-signal-700"><img src={asset(c.images.cover)} alt="" className="size-10 rounded-1 object-cover" loading="lazy" /><span className="whitespace-nowrap">{c.name}</span></Link>,
               <span key="p" className="whitespace-nowrap tabular font-semibold text-asphalt-950">{formatPrice(c.priceFrom)}/день</span>,
               <span key="e" className="whitespace-nowrap">{c.engine}{c.fuel === 'petrol' ? ', бензин' : ''}</span>,
               <span key="c" className="whitespace-nowrap">{c.fuel === 'electric' ? `${c.consumption} (${fuelLabel(c.fuel).toLowerCase()})` : c.consumption}</span>,

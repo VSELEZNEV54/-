@@ -14,6 +14,7 @@ import { tariffName } from '../../data/tariffs'
 import { company } from '../../data/company'
 import { cn, pluralWith } from '../../lib/format'
 import { ContentHead, DarkCta } from '../sections/ContentShared'
+import { asset } from '../../lib/asset'
 
 type Filter = 'all' | ReviewTag
 const tagIds = Object.keys(reviewTagLabels) as ReviewTag[]
@@ -99,7 +100,7 @@ export function C2Reviews() {
             {carRows.map(({ car: c, count }) => (
               <li key={c.slug} className="flex items-center gap-4 rounded-2 border border-asphalt-200 bg-asphalt-50 p-3">
                 <Link to={c2.car(c.slug)} className="group flex min-w-0 flex-1 items-center gap-4">
-                  <img src={c.images.cover} alt="" loading="lazy" className="size-16 shrink-0 rounded-1 object-cover" />
+                  <img src={asset(c.images.cover)} alt="" loading="lazy" className="size-16 shrink-0 rounded-1 object-cover" />
                   <span className="min-w-0">
                     <span className="block t-caption text-asphalt-500">{tariffName(c.tariff)}</span>
                     <span className="block t-title-m truncate group-hover:text-signal-700 transition-colors duration-fast">{c.name}</span>

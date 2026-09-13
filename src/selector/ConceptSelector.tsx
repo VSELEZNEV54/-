@@ -5,6 +5,7 @@ import { cn, formatNumber } from '../lib/format'
 import { cars } from '../data/cars'
 import { tariffs } from '../data/tariffs'
 import { useDocumentTitle } from '../lib/hooks'
+import { asset } from '../lib/asset'
 
 /** Экран выбора концепции: две полноценные визуальные области по 50vw, hover расширяет до 58% */
 export function ConceptSelector() {
@@ -22,7 +23,7 @@ export function ConceptSelector() {
         aria-label="Открыть концепцию 1 — Сайт кодом + статьи под SEO"
       >
         <div className="absolute inset-0">
-          <img src="/img/scenes/hero-duo.jpg" alt="" className="h-full w-full object-cover opacity-[.08] transition-transform duration-[1200ms] ease-out-brand group-hover:scale-105" />
+          <img src={asset('/img/scenes/hero-duo.jpg')} alt="" className="h-full w-full object-cover opacity-[.08] transition-transform duration-[1200ms] ease-out-brand group-hover:scale-105" />
         </div>
         <div className="relative flex h-full flex-col justify-between gap-8 p-6 md:gap-4 md:p-10 lg:p-14">
           <div className="flex items-start justify-between">
@@ -63,7 +64,7 @@ export function ConceptSelector() {
         aria-label="Открыть концепцию 2 — SEO-лайнер"
       >
         <div className="absolute inset-0">
-          <img src="/img/scenes/parking-orange.jpg" alt="" className="h-full w-full object-cover opacity-20 transition-transform duration-[1200ms] ease-out-brand group-hover:scale-105" />
+          <img src={asset('/img/scenes/parking-orange.jpg')} alt="" className="h-full w-full object-cover opacity-20 transition-transform duration-[1200ms] ease-out-brand group-hover:scale-105" />
           <div className="absolute inset-0 bg-gradient-to-t from-asphalt-950 via-asphalt-950/70 to-asphalt-950/30" />
         </div>
         <div className="relative flex h-full flex-col justify-between gap-8 p-6 md:gap-4 md:p-10 lg:p-14">
@@ -97,7 +98,7 @@ export function ConceptSelector() {
       </Link>
 
       <div className="pointer-events-none absolute left-1/2 top-4 hidden -translate-x-1/2 items-center gap-2 rounded-1 border border-[rgba(242,244,247,.14)] bg-asphalt-950/85 px-3 py-1.5 t-caption text-asphalt-300 backdrop-blur lg:flex">
-        <img src="/img/logo/logo-mark.png" alt="" className="h-4" />Таксимания · прототип редизайна · две концепции одного бренда
+        <img src={asset('/img/logo/logo-mark.png')} alt="" className="h-4" />Таксимания · прототип редизайна · две концепции одного бренда
       </div>
     </div>
   )
@@ -132,7 +133,7 @@ function Mockup1() {
     <div className="relative w-full max-w-lg">
       <div className="overflow-hidden rounded-2 border border-asphalt-200 bg-white shadow-pop transition-transform duration-[700ms] ease-out-brand group-hover:-translate-y-1">
         <div className="flex items-center justify-between border-b border-asphalt-200 px-4 py-2.5">
-          <img src="/img/logo/logo-mark.png" alt="" className="h-7" />
+          <img src={asset('/img/logo/logo-mark.png')} alt="" className="h-7" />
           <div className="flex gap-3 t-caption text-asphalt-500"><span>Автомобили</span><span>Условия</span><span>FAQ</span></div>
           <span className="rounded-1 bg-signal-500 px-2 py-1 t-caption text-asphalt-950">Подобрать</span>
         </div>
@@ -142,11 +143,11 @@ function Mockup1() {
             <div className="t-caption !font-normal text-asphalt-600">Москва · 4 тарифа · без залога · за 10 минут</div>
             <div className="mt-1 flex gap-2"><span className="rounded-1 bg-signal-500 px-2.5 py-1.5 t-caption text-asphalt-950">Выбрать автомобиль</span><span className="rounded-1 border border-asphalt-300 px-2.5 py-1.5 t-caption">Рассчитать</span></div>
           </div>
-          <div className="overflow-hidden rounded-1 bg-asphalt-100"><img src={car.images.cover} alt="" className="h-full w-full object-cover" /></div>
+          <div className="overflow-hidden rounded-1 bg-asphalt-100"><img src={asset(car.images.cover)} alt="" className="h-full w-full object-cover" /></div>
         </div>
       </div>
       <div className="absolute -bottom-6 -right-4 w-44 rounded-2 border border-asphalt-200 bg-white p-2.5 shadow-pop transition-transform duration-[700ms] ease-out-brand group-hover:translate-x-1 group-hover:-translate-y-2">
-        <img src={cars[4].images.cover} alt="" className="aspect-[4/3] w-full rounded-1 object-cover" />
+        <img src={asset(cars[4].images.cover)} alt="" className="aspect-[4/3] w-full rounded-1 object-cover" />
         <div className="mt-2 t-caption">{cars[4].name}</div>
         <div className="font-display text-[22px] font-black leading-none tabular">от {formatNumber(cars[4].priceFrom)} ₽</div>
       </div>
@@ -172,7 +173,7 @@ function Mockup2() {
           <div className="grid grid-cols-3 gap-2">
             {cars.slice(4, 10).map((c) => (
               <div key={c.slug} className="overflow-hidden rounded-1 border border-asphalt-700 bg-asphalt-800">
-                <img src={c.images.cover} alt="" className="aspect-[3/2] w-full object-cover" />
+                <img src={asset(c.images.cover)} alt="" className="aspect-[3/2] w-full object-cover" />
                 <div className="p-1.5"><div className="t-caption !text-[11px] text-asphalt-50 truncate">{c.name}</div><div className="t-caption !text-[10px] !font-normal text-asphalt-400">от {formatNumber(c.priceFrom)} ₽</div></div>
               </div>
             ))}

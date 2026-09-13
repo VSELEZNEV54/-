@@ -7,6 +7,7 @@ import { Price, Tag } from '../../ui/Primitives'
 import { DashList } from './helpers'
 import { c2 } from '../Layout'
 import { cn, formatNumber, pluralWith } from '../../lib/format'
+import { asset } from '../../lib/asset'
 
 const carsWord = (n: number) => pluralWith(n, 'машина', 'машины', 'машин')
 
@@ -62,7 +63,7 @@ export function TariffCard({ tariff: t, index }: { tariff: Tariff; index: number
           <p className="t-small text-asphalt-600">{t.short}</p>
         </div>
         <div className="flex shrink-0 -space-x-2">
-          {covers.map((c) => <img key={c.slug} src={c.images.cover} alt={c.name} title={c.name} className="size-12 rounded-1 border-2 border-white object-cover" loading="lazy" />)}
+          {covers.map((c) => <img key={c.slug} src={asset(c.images.cover)} alt={c.name} title={c.name} className="size-12 rounded-1 border-2 border-white object-cover" loading="lazy" />)}
         </div>
       </div>
       <p className="t-body text-asphalt-700">{t.description}</p>

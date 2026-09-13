@@ -17,6 +17,7 @@ import { PageIntro } from '../sections/PageIntro'
 import { FinalCta } from '../sections/FinalCta'
 import { DashList, leadForCar } from '../sections/helpers'
 import { cn, formatPrice } from '../../lib/format'
+import { asset } from '../../lib/asset'
 
 const DEFAULT = ['kia-k5', 'dongfeng-shine-max', 'faw-bestune-b70']
 const SLOTS = 3
@@ -105,7 +106,7 @@ export function C2Compare() {
                     <th key={c.slug} className="px-4 py-4">
                       <div className="flex flex-col gap-3">
                         <div className="relative aspect-[3/2] overflow-hidden rounded-1 bg-asphalt-100">
-                          <img src={c.images.cover} alt={c.name} className="h-full w-full object-cover" loading="lazy" />
+                          <img src={asset(c.images.cover)} alt={c.name} className="h-full w-full object-cover" loading="lazy" />
                           {selected.length > 1 && (
                             <button type="button" onClick={() => remove(c.slug)} className="absolute right-2 top-2 flex size-8 items-center justify-center rounded-1 bg-white text-asphalt-950 transition-colors duration-fast hover:bg-asphalt-100" aria-label={`Убрать ${c.name} из сравнения`}><X className="size-4" /></button>
                           )}

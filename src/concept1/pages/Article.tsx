@@ -14,6 +14,7 @@ import { company } from '../../data/company'
 import { formatDate, phoneHref, readingTime } from '../../lib/format'
 import { C1 } from '../Layout'
 import { MiniCarCard } from '../sections/MiniCarCard'
+import { asset } from '../../lib/asset'
 
 export function C1Article() {
   const { slug = '' } = useParams()
@@ -57,7 +58,7 @@ export function C1Article() {
                 </div>
               </header>
               <div className="overflow-hidden rounded-2 bg-asphalt-100">
-                <img src={a.image} alt="" className="aspect-[16/9] w-full object-cover" />
+                <img src={asset(a.image)} alt="" className="aspect-[16/9] w-full object-cover" />
               </div>
               <ArticleBody blocks={a.blocks} resolve={resolve} />
 

@@ -4,6 +4,7 @@ import { tariffName } from '../../data/tariffs'
 import { cn } from '../../lib/format'
 import { Button } from '../../ui/Button'
 import { Price, Tag } from '../../ui/Primitives'
+import { asset } from '../../lib/asset'
 
 /** Карточка машины для лендинга C1: «Подробнее» открывает модалку, «Узнать наличие» — заявку */
 export function C1CarCard({ car, onLead, onDetails, className }: {
@@ -17,7 +18,7 @@ export function C1CarCard({ car, onLead, onDetails, className }: {
   return (
     <article className={cn('group flex flex-col overflow-hidden rounded-2 border border-asphalt-200 bg-white transition-colors duration-fast hover:border-asphalt-950', className)}>
       <button type="button" onClick={() => onDetails(car)} className="relative block aspect-[4/3] w-full overflow-hidden bg-asphalt-100 text-left" aria-label={`Подробнее: ${car.name}`}>
-        <img src={car.images.cover} alt={car.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-slow ease-out-brand group-hover:scale-[1.03]" />
+        <img src={asset(car.images.cover)} alt={car.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-slow ease-out-brand group-hover:scale-[1.03]" />
         <span className="absolute left-3 top-3 flex gap-1.5">
           <Tag tone="dark">{tariffName(car.tariff)}</Tag>
           {car.fuel === 'electric' && <Tag tone="signal">Электро</Tag>}

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import type { Block } from '../data/articles'
 import { Accordion } from '../ui/Accordion'
 import { Callout, Table } from '../ui/Primitives'
+import { asset } from '../lib/asset'
 
 export type LinkKind = 'car' | 'tariff' | 'article' | 'calc' | 'terms' | 'cars' | 'offers' | 'faq'
 export type LinkResolver = (kind: LinkKind, slug: string) => string
@@ -50,7 +51,7 @@ export function ArticleBody({ blocks, resolve }: { blocks: Block[]; resolve: Lin
           )
           case 'image': return (
             <figure key={i}>
-              <img src={b.src} alt={b.caption ?? ''} className="w-full rounded-2 object-cover" loading="lazy" />
+              <img src={asset(b.src)} alt={b.caption ?? ''} className="w-full rounded-2 object-cover" loading="lazy" />
               {b.caption && <figcaption className="t-caption text-asphalt-500 mt-2">{b.caption}</figcaption>}
             </figure>
           )

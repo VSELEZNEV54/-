@@ -28,7 +28,7 @@ import { C2Compare } from './concept2/pages/Compare'
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
       <LeadProvider>
         <Routes>
           <Route path="/" element={<ConceptSelector />} />

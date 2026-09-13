@@ -5,6 +5,7 @@ import { cn } from '../../lib/format'
 import { Button } from '../../ui/Button'
 import { Modal } from '../../ui/Modal'
 import { Kicker, Price, Tag } from '../../ui/Primitives'
+import { asset } from '../../lib/asset'
 
 /** Модалка «Подробнее» — в C1 нет страниц машин, вся фактура здесь */
 export function CarModal({ car, onClose, onLead }: { car: Car | null; onClose: () => void; onLead: (car: Car) => void }) {
@@ -37,7 +38,7 @@ export function CarModal({ car, onClose, onLead }: { car: Car | null; onClose: (
       <div className="grid grid-cols-1 gap-6 md:grid-cols-[1.15fr_1fr] md:gap-8">
         <div className="flex flex-col gap-2">
           <div className="relative aspect-[4/3] overflow-hidden rounded-2 bg-asphalt-100">
-            <img key={current} src={current} alt={`${car.name}, фото ${idx + 1}`} className="h-full w-full object-cover animate-fade-in" />
+            <img key={current} src={asset(current)} alt={`${car.name}, фото ${idx + 1}`} className="h-full w-full object-cover animate-fade-in" />
             <span className="absolute left-3 top-3 flex gap-1.5">
               <Tag tone="dark">{tariffName(car.tariff)}</Tag>
               {car.fuel === 'electric' && <Tag tone="signal">Электро</Tag>}
@@ -49,7 +50,7 @@ export function CarModal({ car, onClose, onLead }: { car: Car | null; onClose: (
                 key={p} type="button" onClick={() => setIdx(i)} aria-label={`Фото ${i + 1}`} aria-pressed={i === idx}
                 className={cn('aspect-[4/3] overflow-hidden rounded-1 border-2 bg-asphalt-100 transition-colors duration-fast', i === idx ? 'border-signal-500' : 'border-transparent hover:border-asphalt-400')}
               >
-                <img src={p} alt="" className="h-full w-full object-cover" loading="lazy" />
+                <img src={asset(p)} alt="" className="h-full w-full object-cover" loading="lazy" />
               </button>
             ))}
           </div>

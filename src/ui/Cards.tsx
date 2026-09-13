@@ -12,6 +12,7 @@ import type { Offer } from '../data/offers'
 import { cn, formatDate, readingTime, pluralWith } from '../lib/format'
 import { Avatar, Price, Stars, Tag } from './Primitives'
 import { Button } from './Button'
+import { asset } from '../lib/asset'
 
 /* ---------- Карточка автомобиля ---------- */
 export function CarCard({ car, to, onLead, variant = 'landing', className, showSpecs = true }: {
@@ -27,7 +28,7 @@ export function CarCard({ car, to, onLead, variant = 'landing', className, showS
   if (variant === 'compact') {
     return (
       <Link to={to ?? '#'} className={cn('group flex items-center gap-4 rounded-2 border border-asphalt-200 bg-white p-3 transition-colors duration-fast hover:border-asphalt-950', className)}>
-        <img src={car.images.cover} alt={car.name} className="size-20 shrink-0 rounded-1 object-cover" loading="lazy" />
+        <img src={asset(car.images.cover)} alt={car.name} className="size-20 shrink-0 rounded-1 object-cover" loading="lazy" />
         <div className="min-w-0 flex-1">
           <div className="t-caption text-asphalt-500">{tariffName(car.tariff)}</div>
           <div className="t-title-m truncate">{car.name}</div>
@@ -41,7 +42,7 @@ export function CarCard({ car, to, onLead, variant = 'landing', className, showS
   return (
     <article className={cn('group flex flex-col overflow-hidden rounded-2 border border-asphalt-200 bg-white transition-[border-color,transform] duration-fast hover:border-asphalt-950', className)}>
       <Wrapper {...(wrapperProps as { to: string })} className={cn('relative block overflow-hidden bg-asphalt-100', landing ? 'aspect-[4/3]' : 'aspect-[3/2]')}>
-        <img src={car.images.cover} alt={car.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-slow ease-out-brand group-hover:scale-[1.03]" />
+        <img src={asset(car.images.cover)} alt={car.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-slow ease-out-brand group-hover:scale-[1.03]" />
         <div className="absolute left-3 top-3 flex gap-1.5">
           <Tag tone="dark">{tariffName(car.tariff)}</Tag>
           {car.fuel === 'electric' && <Tag tone="signal">Электро</Tag>}
@@ -77,7 +78,7 @@ export function ArticleCard({ article, to, variant = 'default', className, categ
   if (variant === 'row') {
     return (
       <Link to={to} className={cn('group flex gap-4 border-b border-asphalt-200 py-4 transition-colors duration-fast hover:bg-asphalt-0', className)}>
-        <img src={article.image} alt="" className="size-20 shrink-0 rounded-1 object-cover" loading="lazy" />
+        <img src={asset(article.image)} alt="" className="size-20 shrink-0 rounded-1 object-cover" loading="lazy" />
         <div className="min-w-0">
           <div className="t-caption text-signal-700">{cat}</div>
           <div className="t-title-m line-clamp-2 group-hover:text-signal-700 transition-colors duration-fast">{article.title}</div>
@@ -90,7 +91,7 @@ export function ArticleCard({ article, to, variant = 'default', className, categ
   return (
     <Link to={to} className={cn('group flex overflow-hidden rounded-2 border border-asphalt-200 bg-white transition-colors duration-fast hover:border-asphalt-950', featured ? 'flex-col md:flex-row' : 'flex-col', className)}>
       <div className={cn('overflow-hidden bg-asphalt-100', featured ? 'aspect-[16/10] md:aspect-auto md:w-1/2' : 'aspect-[16/10]')}>
-        <img src={article.image} alt="" loading="lazy" className="h-full w-full object-cover transition-transform duration-slow ease-out-brand group-hover:scale-[1.03]" />
+        <img src={asset(article.image)} alt="" loading="lazy" className="h-full w-full object-cover transition-transform duration-slow ease-out-brand group-hover:scale-[1.03]" />
       </div>
       <div className={cn('flex flex-1 flex-col gap-3', featured ? 'p-6 md:p-8' : 'p-5')}>
         <div className="flex items-center gap-2 t-caption text-asphalt-500"><span className="text-signal-700">{cat}</span><span>·</span><span>{readingTime(articleWords(article))}</span></div>
@@ -133,7 +134,7 @@ export function FeatureCard({ label, title, text, fact, image, icon, inverse, cl
     <article className={cn('relative flex flex-col overflow-hidden rounded-2 border', inverse ? 'border-[rgba(242,244,247,.14)] bg-asphalt-800 text-asphalt-50' : 'border-asphalt-200 bg-white', className)}>
       {image && (
         <div className={cn('relative overflow-hidden bg-asphalt-100', size === 'l' ? 'aspect-[16/9]' : 'aspect-[16/8]')}>
-          <img src={image} alt="" loading="lazy" className="h-full w-full object-cover" />
+          <img src={asset(image)} alt="" loading="lazy" className="h-full w-full object-cover" />
         </div>
       )}
       <div className={cn('flex flex-1 flex-col gap-3', size === 'l' ? 'p-6 md:p-8' : 'p-5 md:p-6')}>
@@ -154,7 +155,7 @@ export function OfferCard({ offer, to, className, variant = 'default' }: { offer
   return (
     <Link to={to} className={cn('group relative flex overflow-hidden rounded-2 border border-asphalt-200 bg-white transition-colors duration-fast hover:border-asphalt-950', variant === 'wide' ? 'flex-col md:flex-row' : 'flex-col', className)}>
       <div className={cn('relative overflow-hidden bg-asphalt-900', variant === 'wide' ? 'aspect-[16/9] md:aspect-auto md:w-1/2' : 'aspect-[16/9]')}>
-        <img src={offer.image} alt="" loading="lazy" className="h-full w-full object-cover opacity-90 transition-transform duration-slow ease-out-brand group-hover:scale-[1.03]" />
+        <img src={asset(offer.image)} alt="" loading="lazy" className="h-full w-full object-cover opacity-90 transition-transform duration-slow ease-out-brand group-hover:scale-[1.03]" />
         <div className="absolute inset-0 scrim-photo" />
         <div className="absolute left-4 top-4"><Tag tone={offer.accent ? 'signal' : 'dark'}>{offer.label}</Tag></div>
       </div>

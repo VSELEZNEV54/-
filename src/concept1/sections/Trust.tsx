@@ -3,6 +3,7 @@ import { company, stats } from '../../data/company'
 import { Button } from '../../ui/Button'
 import { Container, Section, SectionHeader, Stat, Tag } from '../../ui/Primitives'
 import { C1 } from '../Layout'
+import { asset } from '../../lib/asset'
 
 /** О компании / Trust — факты вместо истории */
 export function Trust() {
@@ -39,11 +40,11 @@ export function Trust() {
         </div>
         <div className="grid grid-cols-3 gap-4 lg:col-span-7 lg:gap-6">
           <figure className="relative col-span-2 overflow-hidden rounded-2 bg-asphalt-800">
-            <img src="/img/scenes/parking-tiggo7.jpg" alt="Автомобиль парка Таксимании на крытой парковке" loading="lazy" className="aspect-[4/3] h-full w-full object-cover" />
+            <img src={asset('/img/scenes/parking-tiggo7.jpg')} alt="Автомобиль парка Таксимании на крытой парковке" loading="lazy" className="aspect-[4/3] h-full w-full object-cover" />
             <figcaption className="absolute left-3 top-3"><Tag tone="dark">Парк</Tag></figcaption>
           </figure>
           <figure className="relative overflow-hidden rounded-2 bg-asphalt-800">
-            <img src="/img/scenes/manager-ok.webp" alt="Менеджер парка" loading="lazy" className="h-full w-full object-cover" />
+            <img src={asset('/img/scenes/manager-ok.webp')} alt="Менеджер парка" loading="lazy" className="h-full w-full object-cover" />
             <figcaption className="absolute left-3 top-3"><Tag tone="dark">Выдача</Tag></figcaption>
           </figure>
         </div>

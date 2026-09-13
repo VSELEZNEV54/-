@@ -15,6 +15,7 @@ import { company, perks } from '../../data/company'
 import { faq } from '../../data/faq'
 import { formatNumber, phoneHref } from '../../lib/format'
 import { CheckList, DarkCta } from '../sections/ContentShared'
+import { asset } from '../../lib/asset'
 
 const faqIds: Record<string, string[]> = {
   'trial-day': ['trial', 'how-fast', 'deposit', 'docs'],
@@ -102,7 +103,7 @@ export function C2OfferPage() {
                 <Button size="l" variant="ghost" href={phoneHref(company.phone)} icon={<Phone className="size-4" />}>{company.phone}</Button>
               </div>
             </div>
-            <div className="overflow-hidden rounded-2 bg-asphalt-100"><img src={offer.image} alt="" className="aspect-[16/9] w-full object-cover" /></div>
+            <div className="overflow-hidden rounded-2 bg-asphalt-100"><img src={asset(offer.image)} alt="" className="aspect-[16/9] w-full object-cover" /></div>
           </div>
         </Container>
       </Section>

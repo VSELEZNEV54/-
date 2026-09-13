@@ -10,6 +10,7 @@ import { cars, minPriceForTariff } from '../data/cars'
 import { tariffs } from '../data/tariffs'
 import { cn, formatNumber, phoneHref } from '../lib/format'
 import { useLockBody } from '../lib/hooks'
+import { asset } from '../lib/asset'
 
 export const C2 = '/concept-2'
 export const c2 = {
@@ -95,7 +96,7 @@ export function Concept2Layout() {
                   <div className="t-label text-asphalt-500 mb-3">Все автомобили</div>
                   <ul className="grid grid-cols-2 gap-x-6">
                     {cars.map((c) => (
-                      <li key={c.slug}><Link to={c2.car(c.slug)} className="flex items-center gap-3 rounded-1 px-2 py-1.5 hover:bg-asphalt-50 transition-colors duration-fast"><img src={c.images.cover} alt="" className="size-10 rounded-1 object-cover" /><span className="min-w-0"><span className="block t-small font-semibold truncate">{c.name}</span><span className="block t-caption !font-normal text-asphalt-500">от {formatNumber(c.priceFrom)} ₽/день</span></span></Link></li>
+                      <li key={c.slug}><Link to={c2.car(c.slug)} className="flex items-center gap-3 rounded-1 px-2 py-1.5 hover:bg-asphalt-50 transition-colors duration-fast"><img src={asset(c.images.cover)} alt="" className="size-10 rounded-1 object-cover" /><span className="min-w-0"><span className="block t-small font-semibold truncate">{c.name}</span><span className="block t-caption !font-normal text-asphalt-500">от {formatNumber(c.priceFrom)} ₽/день</span></span></Link></li>
                     ))}
                   </ul>
                 </div>

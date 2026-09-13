@@ -11,6 +11,7 @@ import { minPriceForTariff } from '../../data/cars'
 import { featuredReviews } from '../../data/reviews'
 import { formatPrice, phoneHref } from '../../lib/format'
 import { C1 } from '../Layout'
+import { asset } from '../../lib/asset'
 
 const firstSentence = (t: string) => { const i = t.indexOf('. '); return i > 0 ? t.slice(0, i + 1) : t }
 
@@ -53,7 +54,7 @@ export function C1About() {
               </div>
             </div>
             <div className="overflow-hidden rounded-2 bg-asphalt-900 lg:col-span-7">
-              <img src="/img/scenes/parking-orange.jpg" alt="Автомобиль парка Таксимании" className="aspect-[4/3] w-full object-cover sm:aspect-[3/2]" />
+              <img src={asset('/img/scenes/parking-orange.jpg')} alt="Автомобиль парка Таксимании" className="aspect-[4/3] w-full object-cover sm:aspect-[3/2]" />
             </div>
           </div>
         </Container>
@@ -95,7 +96,7 @@ export function C1About() {
       <Section>
         <Container className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
           <div className="overflow-hidden rounded-2 bg-asphalt-100 lg:col-span-7">
-            <img src="/img/scenes/street-tiggo7.webp" alt="Автомобили парка на улице" loading="lazy" className="aspect-[3/2] w-full object-cover" />
+            <img src={asset('/img/scenes/street-tiggo7.webp')} alt="Автомобили парка на улице" loading="lazy" className="aspect-[3/2] w-full object-cover" />
           </div>
           <div className="flex flex-col gap-6 lg:col-span-5">
             <SectionHeader size="m" label="Сервис" title="Как обслуживаются автомобили" lead="График ТО ведёт парк, а не водитель. Вы получаете машину, на которой можно выходить на линию сразу." />
@@ -132,7 +133,7 @@ export function C1About() {
             </div>
           </div>
           <div className="overflow-hidden rounded-2 bg-asphalt-800 lg:col-span-6">
-            <img src="/img/scenes/manager-ok.webp" alt="Менеджер поддержки парка" loading="lazy" className="aspect-[4/3] w-full object-cover" />
+            <img src={asset('/img/scenes/manager-ok.webp')} alt="Менеджер поддержки парка" loading="lazy" className="aspect-[4/3] w-full object-cover" />
           </div>
         </Container>
       </Section>
@@ -145,7 +146,7 @@ export function C1About() {
             {photos.map((p, i) => (
               <Reveal key={p.src} delay={i * 60}>
                 <figure className="relative overflow-hidden rounded-2 bg-asphalt-900">
-                  <img src={p.src} alt={p.alt} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+                  <img src={asset(p.src)} alt={p.alt} loading="lazy" className="aspect-[4/3] w-full object-cover" />
                   <figcaption className="absolute left-3 top-3"><Tag tone="dark">{p.tag}</Tag></figcaption>
                 </figure>
               </Reveal>

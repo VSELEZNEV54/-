@@ -11,6 +11,7 @@ import { tariffs } from '../../data/tariffs'
 import { featuredReviews } from '../../data/reviews'
 import { cn, phoneHref } from '../../lib/format'
 import { ContentHead, DarkCta } from '../sections/ContentShared'
+import { asset } from '../../lib/asset'
 
 const chain = [
   { n: '01', title: 'Автопарк', image: '/img/scenes/parking-tiggo7.jpg', link: { label: 'Смотреть автопарк', to: c2.cars },
@@ -38,7 +39,7 @@ export function C2About() {
           <div className="grid grid-cols-3 gap-4 border-t border-asphalt-200 pt-5">
             {heroStats.map((s) => <Stat key={s.label} value={s.value} unit={s.unit} label={s.label} />)}
           </div>
-          <div className="overflow-hidden rounded-2 bg-asphalt-100"><img src="/img/scenes/hero-duo.jpg" alt="Автомобили парка Таксимания" className="aspect-[3/2] w-full object-cover" /></div>
+          <div className="overflow-hidden rounded-2 bg-asphalt-100"><img src={asset('/img/scenes/hero-duo.jpg')} alt="Автомобили парка Таксимания" className="aspect-[3/2] w-full object-cover" /></div>
         </div>
       </ContentHead>
 
@@ -75,7 +76,7 @@ export function C2About() {
                       </ul>
                       <Link to={b.link.to} className="group inline-flex items-center gap-1.5 t-small font-semibold text-signal-700 transition-colors duration-fast hover:text-signal-500">{b.link.label}<ArrowRight className="size-4 transition-transform duration-fast group-hover:translate-x-0.5" /></Link>
                     </div>
-                    <div className="overflow-hidden rounded-2 bg-asphalt-100"><img src={b.image} alt="" loading="lazy" className="aspect-[3/2] w-full object-cover" /></div>
+                    <div className="overflow-hidden rounded-2 bg-asphalt-100"><img src={asset(b.image)} alt="" loading="lazy" className="aspect-[3/2] w-full object-cover" /></div>
                   </Reveal>
                 </li>
               )

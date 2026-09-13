@@ -14,6 +14,7 @@ import { articleBySlug, articleWords, c2CategoryOf, categoryLabels, relatedArtic
 import { carBySlug, minPriceForTariff } from '../../data/cars'
 import { tariffById, type TariffId } from '../../data/tariffs'
 import { cn, formatDate, formatNumber, readingTime } from '../../lib/format'
+import { asset } from '../../lib/asset'
 
 const resolve: LinkResolver = (kind, slug) => {
   switch (kind) {
@@ -111,7 +112,7 @@ export function C2Article() {
       <Section tight>
         <Container className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,720px)_minmax(280px,360px)] lg:justify-between lg:gap-16">
           <div className="flex min-w-0 flex-col gap-8">
-            <div className="overflow-hidden rounded-2 bg-asphalt-100"><img src={article.image} alt="" className="aspect-[16/9] w-full object-cover" /></div>
+            <div className="overflow-hidden rounded-2 bg-asphalt-100"><img src={asset(article.image)} alt="" className="aspect-[16/9] w-full object-cover" /></div>
             {toc.length > 0 && (
               <nav aria-label="Содержание" className="rounded-2 border border-asphalt-200 bg-white p-4 lg:hidden">
                 <div className="t-label text-asphalt-500 mb-2">Содержание</div>

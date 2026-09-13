@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { ChevronRight, Star } from 'lucide-react'
 import { cn } from '../lib/format'
 import { useInView } from '../lib/hooks'
+import { asset } from '../lib/asset'
 
 /* ---------- Сетка ---------- */
 export function Container({ children, className, ...rest }: { children: ReactNode; className?: string } & HTMLAttributes<HTMLDivElement>) {
@@ -165,7 +166,7 @@ export function Table({ head, rows, caption, className, highlightCol }: { head: 
 export function Logo({ to, className, size = 'm' }: { inverse?: boolean; to: string; className?: string; compact?: boolean; size?: 'm' | 'l' }) {
   return (
     <Link to={to} className={cn('inline-flex items-center', className)} aria-label="Таксимания — на главную">
-      <img src="/img/logo/logo-mark.png" alt="Таксимания" className={cn('w-auto', size === 'l' ? 'h-14' : 'h-12')} />
+      <img src={asset('/img/logo/logo-mark.png')} alt="Таксимания" className={cn('w-auto', size === 'l' ? 'h-14' : 'h-12')} />
     </Link>
   )
 }

@@ -21,6 +21,7 @@ import { TermsFacts } from '../sections/TermsFacts'
 import { FinalCta } from '../sections/FinalCta'
 import { PartnerBadge, calcFullWrap, leadForCar } from '../sections/helpers'
 import { formatNumber, formatPrice, pluralWith } from '../../lib/format'
+import { asset } from '../../lib/asset'
 
 const valueIcons: Record<string, LucideIcon> = { transparent: ShieldCheck, fast: Clock, ready: Wrench, support: Headset, choice: CarFront }
 
@@ -52,7 +53,7 @@ export function C2Home() {
               </div>
             </div>
             <div className="aspect-[4/3] overflow-hidden rounded-2 bg-asphalt-100">
-              <img src="/img/scenes/hero-duo.jpg" alt="Автомобили парка Таксимания на площадке выдачи" className="h-full w-full object-cover" fetchPriority="high" />
+              <img src={asset('/img/scenes/hero-duo.jpg')} alt="Автомобили парка Таксимания на площадке выдачи" className="h-full w-full object-cover" fetchPriority="high" />
             </div>
           </div>
           {/* Входы по тарифам */}

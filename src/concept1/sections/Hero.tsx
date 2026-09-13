@@ -2,6 +2,7 @@ import { ArrowDown } from 'lucide-react'
 import { company, heroStats } from '../../data/company'
 import { Button } from '../../ui/Button'
 import { Container, Stat } from '../../ui/Primitives'
+import { asset } from '../../lib/asset'
 
 /** Первый экран: что, где, почему, что дальше — за 5 секунд. Главный объект — автомобиль. */
 export function Hero() {
@@ -31,7 +32,7 @@ export function Hero() {
           <div className="lg:col-span-7 lg:col-start-6 lg:row-span-2 lg:row-start-1 lg:-mr-[max(var(--margin),calc((100vw_-_var(--container))/2))]">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2 bg-asphalt-900 sm:aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[580px] lg:rounded-r-none">
               <img
-                src="/img/scenes/hero-duo.jpg" alt="Автомобили парка Таксимания, готовые к выдаче" fetchPriority="high"
+                src={asset('/img/scenes/hero-duo.jpg')} alt="Автомобили парка Таксимания, готовые к выдаче" fetchPriority="high"
                 className="absolute inset-0 h-full w-full object-cover object-[70%_50%]"
               />
             </div>
