@@ -50,8 +50,8 @@ function card(car, onHome) {
   if (car.rent) {
     let label = "Аренда", note = "";
     if (car.rentLater) {
-      label += onHome ? ", со 2-й недели" : ", 1-я неделя";
-      const otherRate = onHome ? `1-я неделя — ${money(car.rent)} ₽` : `далее ${money(car.rentLater)} ₽`;
+      label += onHome ? " со 2-й недели" : ", 1-я неделя";
+      const otherRate = onHome ? `1-я неделя — ${money(car.rent)} ₽/сут` : `далее ${money(car.rentLater)} ₽`;
       note = `<div class="price__note">${otherRate}</div>`;
     }
     prices.push(`<div class="price"><div class="price__label">${label}</div><div class="price__value">${money(dailyPrice)} ₽<small>/сут</small></div>${note}</div>`);
