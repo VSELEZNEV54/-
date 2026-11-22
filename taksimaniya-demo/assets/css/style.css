@@ -876,6 +876,16 @@ html.lock, html.lock body { overflow: hidden; }
 .fleet-home__head p { margin-top: 14px; color: var(--body-secondary); }
 .fleet-home__head .link-arrow { white-space: nowrap; }
 .car-card { border: 1px solid var(--line); min-width: 0; }
+.car-card--featured {
+  --muted: var(--on-dark-muted);
+  --line: var(--line-light);
+  color: var(--card);
+  background: var(--buyout);
+  border-color: var(--buyout);
+}
+.car-card--featured .car-card__specs .icon { color: inherit; opacity: 1; }
+.car-card--featured .price__value { color: var(--orange); }
+.car-card--featured .btn--dark { border: 1px solid var(--orange); }
 .car-card__media { display: block; aspect-ratio: 1.6; }
 .car-card__dots { pointer-events: none; }
 .car-card__body { gap: 0; }

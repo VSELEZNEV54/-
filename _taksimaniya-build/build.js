@@ -17,6 +17,8 @@ const esc = value => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt
 const icon = name => `<svg class="icon" aria-hidden="true"><use href="#i-${name}"></use></svg>`;
 const arrow = `<span class="btn__icon">${icon("arrow")}${icon("arrow")}</span>`;
 const cheapest = list => Math.min(...list.flatMap(car => plansFor(car).map(plan => plan.daily)));
+const featuredHomeId = "tenet-t7";
+const regularDailyPrice = car => car.rentLater || car.rent || cheapest([car]);
 function priceDay(key) {
   const list = byClass(key);
   const rents = list.map(car => car.rent).filter(Boolean);
@@ -32,10 +34,12 @@ function actions(car, withArrow = false) {
   ].join("");
 }
 
-function card(car) {
+function card(car, onHome) {
   const name = esc(car.name);
   const cls = esc(classes[car.cls].name);
   const buyPrice = Math.min(...car.buyout.map(offer => offer.price));
+  const dailyPrice = onHome ? regularDailyPrice(car) : car.rent || buyPrice;
+  const cardClass = onHome && car.id === featuredHomeId ? "car-card car-card--featured" : "car-card";
   const formats = [car.rent && "rent", car.buyout.length && "buyout"].filter(Boolean).join(" ");
   const images = car.img.slice(0, 3);
   const photos = images.map((src, i) => `<img${i ? "" : ' class="is-active"'} src="${esc(src)}" alt="${name} — фото ${i + 1}" loading="lazy" decoding="async" width="1100" height="733">`);
@@ -43,9 +47,17 @@ function card(car) {
   if (car.badge && car.badge !== classes[car.cls].name && car.badge !== "Бизнес-класс") tags.push(`<span class="tag tag--orange">${esc(car.badge)}</span>`);
   const specs = [["gear", car.gearbox], ["engine", car.engine], [car.fuel === "electro" ? "bolt" : "fuel", car.fuelLabel], ["route", car.usage]];
   const prices = [];
-  if (car.rent) prices.push(`<div class="price"><div class="price__label">Аренда${car.rentLater ? ", 1-я неделя" : ""}</div><div class="price__value">${money(car.rent)} ₽<small>/сут</small></div>${car.rentLater ? `<div class="price__note">далее ${money(car.rentLater)} ₽</div>` : ""}</div>`);
+  if (car.rent) {
+    let label = "Аренда", note = "";
+    if (car.rentLater) {
+      label += onHome ? ", со 2-й недели" : ", 1-я неделя";
+      const otherRate = onHome ? `1-я неделя — ${money(car.rent)} ₽` : `далее ${money(car.rentLater)} ₽`;
+      note = `<div class="price__note">${otherRate}</div>`;
+    }
+    prices.push(`<div class="price"><div class="price__label">${label}</div><div class="price__value">${money(dailyPrice)} ₽<small>/сут</small></div>${note}</div>`);
+  }
   if (car.buyout.length) prices.push(`<div class="price price--buyout"><div class="price__label">С выкупом</div><div class="price__value">${car.buyout.length > 1 ? "от " : ""}${money(buyPrice)} ₽<small>/сут</small></div><div class="price__note">${car.buyout.map(b => esc(b.term)).join(" или ")}</div></div>`);
-  return `<article class="car-card" id="car-${car.id}" data-car="${car.id}" data-cls="${car.cls}" data-body="${car.body}" data-fuel="${car.fuel}" data-formats="${formats}" data-price="${car.rent || buyPrice}" data-buyout-price="${car.buyout.length ? buyPrice : ""}" data-order="${cars.indexOf(car)}">
+  return `<article class="${cardClass}" id="car-${car.id}" data-car="${car.id}" data-cls="${car.cls}" data-body="${car.body}" data-fuel="${car.fuel}" data-formats="${formats}" data-price="${dailyPrice}" data-buyout-price="${car.buyout.length ? buyPrice : ""}" data-order="${cars.indexOf(car)}">
     <a class="car-card__media" href="${carUrl(car)}" aria-label="Подробнее о ${name}" tabindex="-1">
       ${photos.join("\n      ")}
       <div class="car-card__dots" aria-hidden="true">${images.map((_, i) => `<i${i ? "" : ' class="is-active"'}></i>`).join("")}</div>
@@ -59,7 +71,7 @@ function card(car) {
     </div>
   </article>`;
 }
-const cardsHtml = list => list.map(card).join("\n");
+const cardsHtml = (list, onHome = false) => list.map(car => card(car, onHome)).join("\n");
 
 function catalogVars(key = "") {
   const list = key ? byClass(key) : cars;
@@ -188,11 +200,14 @@ const defaults = {
 };
 const pages = new Map();
 const add = (file, template, vars) => pages.set(file, render(template, { ...defaults, ...vars }));
-const frontIds = ["kia-rio", "geely-coolray", "tenet-t7", "dongfeng-shine-max", "hongqi-h5", "chery-tiggo-8-pro-max"];
+const homeCars = [
+  ...cars.filter(car => car.id === featuredHomeId),
+  ...cars.filter(car => car.id !== featuredHomeId).sort((a, b) => regularDailyPrice(b) - regularDailyPrice(a))
+];
 const fleetFilm = { ...filmFiles("fleet-drive", "assets/img"), mobileSrc: "assets/video/taksimaniya-drive-mobile.mp4" };
 add("index.html", "index", {
   ...calcVars(), ...filmVars(fleetFilm), cur: "home", fleet_count: models(cars.length),
-  cards_popular: cardsHtml(frontIds.map(id => cars.find(car => car.id === id)).filter(Boolean)),
+  fleet_cards: cardsHtml(homeCars, true),
   quiz_classes: Object.entries(classes).map(([key, cl]) => `<label class="quiz-choice"><input type="radio" name="tariff" value="${key}"><span><b>${esc(cl.name)}</b></span></label>`).join(""),
   float_cta: `<a class="btn btn--sm" href="avtopark.html">Выбрать автомобиль ${arrow}</a>`
 });
