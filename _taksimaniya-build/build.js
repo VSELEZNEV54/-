@@ -114,13 +114,17 @@ function filmFiles(slug, posterDir = "assets/img/cars") {
 const modelFilm = car => car.video === true ? filmFiles(car.id) : car.video;
 
 function filmVars(film) {
-  if (!film) return {};
   const sources = [["data-src", film.src], ["data-mobile-src", film.mobileSrc], ["data-portrait-src", film.portraitSrc]];
   return {
     film_poster: esc(film.poster),
     video_sources: sources.filter(([, src]) => src).map(([attr, src]) => `${attr}="${esc(src)}"`).join(" "),
-    portrait_cover: film.portraitPoster ? `<source media="(max-aspect-ratio: 3/4)" srcset="${esc(film.portraitPoster)}">` : ""
+    portrait_cover: film.portraitPoster ? `\n    <source media="(max-aspect-ratio: 3/4)" srcset="${esc(film.portraitPoster)}">` : ""
   };
+}
+
+function modelMedia(car, film = modelFilm(car)) {
+  if (film) return { partials: { "model-media": "film-media" }, ...filmVars(film) };
+  return { partials: { "model-media": "photo-media" }, hero_photo: esc(car.img[0]) };
 }
 
 function modelVars(car) {
@@ -130,14 +134,12 @@ function modelVars(car) {
   const terms = car.buyout.length ? " с выкупом" : "";
   const headline = `Аренда авто ${car.name}${terms} под такси в Москве`;
   const plans = plansFor(car);
-  const mediaDescription = film ? "Видео проезда и салона, фотографии и характеристики." : "Фотографии, характеристики и расчёт дохода.";
+  const mediaDescription = film ? "Видео проезда, фотографии и характеристики." : "Фотографии, характеристики и расчёт дохода.";
   const description = `${car.name} для тарифа «${tariff.name}» в Москве. ${plans.map(p => `${p.label} — ${money(p.daily)} ₽/сутки`).join(". ")}. ${mediaDescription}`;
   const photoThumbs = car.img.map((src, i) => `<button type="button" data-thumb="${i}" aria-label="Фото ${i + 1} из ${car.img.length}" aria-current="${i === 0}"><img src="${esc(src)}" alt="" width="300" height="200" loading="lazy"></button>`);
   const specs = [["Кузов", car.body === "crossover" ? "Кроссовер" : "Седан"], ["Коробка передач", car.gearbox], ["Двигатель", car.engine], [car.fuel === "electro" ? "Запас хода" : "Расход топлива", car.usage]];
-  if (film) {
-    if (car.year) specs.unshift(["Год выпуска", car.year]);
-    specs.push(["Тип топлива", car.fuelLabel]);
-  }
+  if (car.year) specs.unshift(["Год выпуска", car.year]);
+  specs.push(["Тип топлива", car.fuelLabel]);
   const benefit = (pic, heading, body) => `<article><span class="model-benefit-icon">${icon(pic)}</span><h3>${esc(heading)}</h3><p>${esc(body)}</p></article>`;
   const advantage = car.advantage || { title: car.body === "crossover" ? "Кроссовер для смен в такси" : "Седан для смен в такси", text: `${car.name} доступен для работы в тарифе «${tariff.name}» в Москве.` };
   const practical = car.fuel === "electro"
@@ -151,8 +153,7 @@ function modelVars(car) {
   return {
     ...seo(`${headline} — Таксимания`, description, film?.poster || car.img[0], [[tariff.name, tariff.url], [car.name, carUrl(car)]]),
     ...calcVars(car), model_terms: terms && ` <span>${terms.trim()}</span>`, model_id: car.id, model_name: name,
-    partials: { "model-intro": film ? "model-hero" : "car-panel" }, ...filmVars(film),
-    gallery_image: esc(car.img[0]), gallery_loading: film ? 'loading="lazy"' : 'fetchpriority="high"', photo_count: car.img.length,
+    ...modelMedia(car, film), gallery_image: esc(car.img[0]), photo_count: car.img.length,
     hero_rates: heroRates.join(""),
     hero_actions: actions(car, true),
     class_url: tariff.url, tariff_name: esc(tariff.name), actions: actions(car),
@@ -189,7 +190,6 @@ const pages = new Map();
 const add = (file, template, vars) => pages.set(file, render(template, { ...defaults, ...vars }));
 const frontIds = ["kia-rio", "geely-coolray", "tenet-t7", "dongfeng-shine-max", "hongqi-h5", "chery-tiggo-8-pro-max"];
 const fleetFilm = { ...filmFiles("fleet-drive", "assets/img"), mobileSrc: "assets/video/taksimaniya-drive-mobile.mp4" };
-const tariffFilms = { comfort: filmFiles("tarif-comfort", "assets/img"), "comfort-plus": filmFiles("tarif-comfort-plus", "assets/img") };
 add("index.html", "index", {
   ...calcVars(), ...filmVars(fleetFilm), cur: "home", fleet_count: models(cars.length),
   cards_popular: cardsHtml(frontIds.map(id => cars.find(car => car.id === id)).filter(Boolean)),
@@ -201,12 +201,11 @@ add("avtopark.html", "avtopark", { ...catalogVars(), ...filmVars(fleetFilm), cur
 for (const [key, tariff] of Object.entries(classes)) {
   const list = byClass(key);
   const price = priceDay(key);
-  const cover = list.find(car => car.rent === price) || list[0];
-  const film = tariffFilms[key] || modelFilm(cover) || fleetFilm;
+  const cover = list.find(car => car.video) || list.find(car => car.rent === price) || list[0];
   add(tariff.url, "tariff", {
     ...catalogVars(key), ...seo(`Авто под такси «${tariff.name}» в Москве — от ${money(price)} ₽/сутки | Таксимания`,
       `Аренда автомобилей для работы в тарифе «${tariff.name}» в Москве. В парке ${models(list.length)}, от ${money(price)} ₽ в сутки. ${tariff.intro}`, cover.img[0], [[tariff.name, tariff.url]]),
-    ...filmVars(film), tariff_name: esc(tariff.name), tariff_intro: esc(tariff.intro), price_day: money(price), count_models: models(list.length),
+    ...modelMedia(cover), tariff_name: esc(tariff.name), tariff_intro: esc(tariff.intro), price_day: money(price), count_models: models(list.length),
     float_label: `${esc(tariff.name)} · <b>от ${money(price)} ₽/сутки</b>`,
     float_cta: `<button class="btn btn--sm" type="button" data-enquiry data-tariff="${key}">Заявка на тариф ${arrow}</button>`
   });
