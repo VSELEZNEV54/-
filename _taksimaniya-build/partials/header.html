@@ -1,0 +1,73 @@
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="header">
+  <div class="container">
+    <div class="header__bar">
+      <a class="logo" href="index.html" aria-label="Таксимания — на главную">
+        <img src="assets/img/logo.webp" alt="" width="135" height="212">
+        <span class="logo__text"><span class="logo__name">Таксимания</span><span class="logo__sub">Аренда авто под такси</span></span>
+      </a>
+      <nav class="nav" aria-label="Основная навигация">
+        <div class="nav__item" data-mega>
+          <a class="nav__link" href="avtopark.html" data-mega-trigger aria-haspopup="true" aria-expanded="false"{{cur:park}}>Автопарк {{i:chevron}}</a>
+          <div class="mega" id="mega-park">
+            <div class="mega__col">
+              <p class="mega__title">Тарифы</p>
+              <a class="mega__link" href="{{url:econom}}">Эконом <small>от 1 600 ₽</small></a>
+              <a class="mega__link" href="{{url:comfort}}">Комфорт <small>от 2 000 ₽</small></a>
+              <a class="mega__link" href="{{url:comfort-plus}}">Комфорт+ <small>от 2 500 ₽</small></a>
+              <a class="mega__link" href="{{url:business}}">Бизнес <small>от 3 900 ₽</small></a>
+            </div>
+            <div class="mega__col">
+              <p class="mega__title">Подборки</p>
+              <a class="mega__link" href="avtopark.html?format=buyout">Аренда с выкупом <small>8 моделей</small></a>
+              <a class="mega__link" href="avtopark.html?body=crossover">Кроссоверы <small>4 модели</small></a>
+              <a class="mega__link" href="avtopark.html?body=sedan">Седаны <small>7 моделей</small></a>
+              <a class="mega__link" href="avtopark.html?fuel=electro">Электромобили <small>1 модель</small></a>
+            </div>
+            <a class="mega__promo" href="avtopark.html">
+              <img src="assets/img/cars/tiggo8-1.webp" alt="" loading="lazy" width="1005" height="670">
+              <b>Весь автопарк</b><span>11 моделей · более 1000 машин</span>
+            </a>
+          </div>
+        </div>
+        <a class="nav__link" href="index.html#tariffs">Тарифы</a>
+        <a class="nav__link" href="index.html#quiz">Подбор авто</a>
+        <a class="nav__link" href="index.html#calc">Калькулятор</a>
+        <a class="nav__link" href="#contacts">Контакты</a>
+      </nav>
+      <div class="header__right">
+        <div class="header__phone"><a href="tel:+74950851616">+7 (495) 085-16-16</a><span>Работаем круглосуточно</span></div>
+        <button class="btn btn--sm header__cta" type="button" data-enquiry><span class="header__cta-long">Оставить заявку</span><span class="header__cta-short">Заявка</span> {{i:arrow-ur}}</button>
+        <button class="icon-btn burger" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Открыть меню">{{i:menu}}</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true" aria-label="Меню" role="dialog" aria-modal="true">
+  <div class="mobile-menu__top">
+    <a class="logo" href="index.html" aria-label="Таксимания — на главную">
+      <img src="assets/img/logo.webp" alt="" width="135" height="212">
+      <span class="logo__text"><span class="logo__name">Таксимания</span><span class="logo__sub">Аренда авто под такси</span></span>
+    </a>
+    <button class="icon-btn" type="button" data-menu-close aria-label="Закрыть меню">{{i:close}}</button>
+  </div>
+  <nav class="mobile-menu__nav" aria-label="Мобильная навигация">
+    <a href="avtopark.html"{{cur:park}}>Автопарк {{i:arrow}}</a>
+    <div class="mobile-menu__chips">
+      <a href="{{url:econom}}">Эконом</a><a href="{{url:comfort}}">Комфорт</a><a href="{{url:comfort-plus}}">Комфорт+</a><a href="{{url:business}}">Бизнес</a><a href="avtopark.html?format=buyout">С выкупом</a>
+    </div>
+    <a href="avtopark.html?format=buyout">Аренда с выкупом {{i:arrow}}</a>
+    <a href="index.html#quiz">Подбор авто {{i:arrow}}</a>
+    <a href="index.html#requirements">Условия {{i:arrow}}</a>
+    <a href="index.html#calc">Калькулятор {{i:arrow}}</a>
+    <a href="index.html#reviews">Отзывы {{i:arrow}}</a>
+    <a href="index.html#blog">Блог {{i:arrow}}</a>
+    <a href="#contacts">Контакты {{i:arrow}}</a>
+  </nav>
+  <div class="mobile-menu__foot">
+    <a class="phone-big" href="tel:+74950851616">+7 (495) 085-16-16</a>
+    <span class="text-muted">Работаем круглосуточно · Загородное шоссе, 1к2с10</span>
+    <button class="btn btn--block" type="button" data-enquiry>Оставить заявку {{arrow}}</button>
+  </div>
+</div>

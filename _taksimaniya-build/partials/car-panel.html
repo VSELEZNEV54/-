@@ -1,0 +1,15 @@
+<section class="model-page page-hero" aria-labelledby="model-title" data-hide-float>
+  <div class="container">
+    {{> car-heading}}
+    <div class="detail model-summary">
+      {{> car-gallery}}
+      <div class="detail__info">
+        <a class="model-tariff" href="{{class_url}}">Тариф «{{tariff_name}}» {{i:arrow-ur}}</a>
+        <h2 class="h3">Условия для водителя</h2>
+        <dl class="detail__specs">{{specs}}</dl>
+        <div class="detail__prices">{{prices}}</div>
+        <div class="detail__actions">{{actions}}</div>
+      </div>
+    </div>
+  </div>
+</section>

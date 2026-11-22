@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Автопарк: аренда машин под такси в Москве от 1 600 ₽/сутки — Таксимания</title>
+  <meta name="description" content="11 моделей для работы в такси: Kia Rio, Geely Coolray, Chery Tiggo, Hongqi H5 и другие. Аренда и выкуп без залога в тарифах Эконом, Комфорт, Комфорт+ и Бизнес. Цены за сутки.">
+  <!-- Демо-макет: закрыт от индексации. Перед запуском снять noindex и указать canonical. -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Автопарк Таксимании — аренда и выкуп машин под такси">
+  <meta property="og:image" content="assets/img/cars/tiggo8-1.webp">
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="preload" href="assets/fonts/inter-tight-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.add("js");setTimeout(function(){if(!window.__taxiReady)document.documentElement.classList.remove("js")},2500);</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Главная", "item": "index.html" },
+      { "@type": "ListItem", "position": 2, "name": "Автопарк", "item": "avtopark.html" }
+    ]
+  }
+  </script>
+</head>
+<body>
+{{> sprite}}
+{{> header}}
+
+<main id="main">
+
+  <!-- ============ PAGE HERO ============ -->
+  <section class="model-hero fleet-hero" aria-labelledby="page-title" data-hide-float>
+    {{> film-media}}
+    <div class="container model-hero__content">
+      <div>
+        <nav aria-label="Хлебные крошки"><ol class="crumbs"><li><a href="index.html">Главная</a></li><li aria-current="page" id="crumb-current">Автопарк</li></ol></nav>
+        <h1 class="model-title" id="page-title">Машины для работы <span class="accent">в такси</span></h1>
+      </div>
+      <div class="model-hero__offer hero__offer">
+        <p class="hero__lead">Аренда и выкуп автомобилей в Москве. 11 моделей от Эконома до Бизнеса. Машины не старше 3 лет, цена фиксируется в договоре.</p>
+        <a class="btn" href="#catalog">Смотреть каталог {{arrow}}</a>
+      </div>
+    </div>
+  </section>
+  <section class="fleet-classes" aria-label="Условия парка и выбор тарифа">
+    <div class="container">
+      <ul class="page-hero__stats">
+        <li class="stat stat--orange"><b>1 600 ₽</b><span>минимальная цена аренды в сутки</span></li>
+        <li class="stat"><b>0 ₽</b><span>залог за автомобиль</span></li>
+        <li class="stat"><b>10 мин</b><span>решение по выдаче авто</span></li>
+      </ul>
+      <div class="class-strip" data-stagger data-step="70" role="group" aria-label="Выбор тарифа">
+        <a class="class-tile" href="{{url:econom}}"><img src="assets/img/cars/rio-1.webp" alt="" width="1080" height="718"><span><b>Эконом</b><span>1 модель · от 1 600 ₽</span></span></a>
+        <a class="class-tile" href="{{url:comfort}}"><img src="assets/img/cars/geely-1.webp" alt="" width="1100" height="733"><span><b>Комфорт</b><span>3 модели · от 2 000 ₽</span></span></a>
+        <a class="class-tile" href="{{url:comfort-plus}}"><img src="assets/img/cars/dongfeng-1.webp" alt="" width="1080" height="720"><span><b>Комфорт+</b><span>6 моделей · от 2 500 ₽</span></span></a>
+        <a class="class-tile" href="{{url:business}}"><img src="assets/img/cars/hongqi-1.webp" alt="" width="1100" height="733"><span><b>Бизнес</b><span>1 модель · от 3 900 ₽</span></span></a>
+      </div>
+    </div>
+  </section>
+
+  {{> catalog}}
+
+  <!-- ============ INCLUDED ============ -->
+  <section class="section" id="service" aria-labelledby="service-title">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow" data-reveal>Сервис парка</p>
+          <h2 class="h2" id="service-title" data-split>Работать с&nbsp;нами <span class="tone">удобно</span></h2>
+        </div>
+        <p class="sec-head__side" data-reveal style="--d:150">Каждый автомобиль из каталога выдаётся на одинаковых понятных условиях — без скрытых платежей и сюрпризов в договоре.</p>
+      </div>
+      <div class="included" data-stagger data-step="70">
+        <article class="inc"><span class="inc__icon">{{i:wrench}}</span><h3>Обслуживание в&nbsp;своём сервисе</h3><p>Все машины не старше 3 лет и своевременно проходят обслуживание в сервисе парка.</p></article>
+        <article class="inc"><span class="inc__icon">{{i:headset}}</span><h3>Поддержка 24/7</h3><p>Помогаем решить любой вопрос — от мелкой неисправности до ДТП.</p></article>
+        <article class="inc"><span class="inc__icon">{{i:shield}}</span><h3>Цена фиксируется в&nbsp;договоре</h3><p>Стоимость аренды не повышается в течение срока договора.</p></article>
+        <article class="inc"><span class="inc__icon">{{i:swap}}</span><h3>Замена авто или класса</h3><p>Можно сменить автомобиль или класс в любое рабочее время.</p></article>
+        <article class="inc"><span class="inc__icon">{{i:wallet}}</span><h3>Моментальный вывод</h3><p>Круглосуточный вывод заработка до 15 000 ₽.</p></article>
+        <article class="inc"><span class="inc__icon">{{i:fuel}}</span><h3>Яндекс Заправки</h3><p>Заправляйтесь через приложение без лишних поездок и наличных.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMPARE ============ -->
+  <section class="section" id="compare" aria-labelledby="compare-title">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow" data-reveal>Форматы</p>
+          <h2 class="h2" id="compare-title" data-split>Аренда или выкуп: <span class="tone">сравните условия</span></h2>
+        </div>
+      </div>
+      <div class="compare" data-reveal>
+        <div class="compare__wrap">
+          <table>
+            <thead><tr><th scope="col"><span class="sr-only">Параметр</span></th><th scope="col">Аренда</th><th scope="col">Аренда с выкупом</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Стоимость в сутки</th><td>от 1 600 ₽</td><td>от 2 000 ₽</td></tr>
+              <tr><th scope="row">Срок</th><td>Пока вам удобно — сдача с предупреждением за неделю</td><td>От 1,5 до 4 лет — зависит от модели</td></tr>
+              <tr><th scope="row">Автомобиль в конце срока</th><td>Возвращается в парк</td><td>Переходит в вашу собственность</td></tr>
+              <tr><th scope="row">Доступно моделей</th><td>10 моделей</td><td>8 моделей</td></tr>
+              <tr><th scope="row"></th>
+                <td><button class="btn btn--sm btn--dark" type="button" data-filter="format" data-value="rent" data-toggle="false" data-scroll>Показать аренду {{arrow}}</button></td>
+                <td><button class="btn btn--sm" type="button" data-filter="format" data-value="buyout" data-toggle="false" data-scroll>Показать выкуп {{arrow}}</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLASSES ============ -->
+  <section class="section" id="classes" aria-labelledby="classes-title">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow" data-reveal>Тарифы</p>
+          <h2 class="h2" id="classes-title" data-split>Какой тариф <span class="tone">выбрать</span></h2>
+        </div>
+        <p class="sec-head__side" data-reveal style="--d:150">Коротко о классах автомобилей в парке. Подробнее расскажет менеджер на встрече.</p>
+      </div>
+      <div class="classes" data-stagger data-step="80">
+        <article class="cls"><p class="cls__num">01</p><h3>Эконом</h3><p>Самый доступный способ начать работу в такси: невысокая цена аренды и экономичный расход.</p><p class="cls__models"><b>Модели:</b> Kia Rio</p><a class="link-arrow" href="{{url:econom}}">Машины тарифа {{i:arrow}}</a></article>
+        <article class="cls"><p class="cls__num">02</p><h3>Комфорт</h3><p>Более просторные автомобили для тех, кто хочет зарабатывать больше, не переходя в премиум.</p><p class="cls__models"><b>Модели:</b> Geely Coolray, Kia Optima, Evolute i-Pro</p><a class="link-arrow" href="{{url:comfort}}">Машины тарифа {{i:arrow}}</a></article>
+        <article class="cls"><p class="cls__num">03</p><h3>Комфорт+</h3><p>Самый широкий выбор в парке: седаны и кроссоверы, в том числе новинки 2025 года.</p><p class="cls__models"><b>Модели:</b> TENET T7, Dongfeng Shine Max, FAW Bestune B70, Chery Tiggo 7 Pro и 8 Pro Max, Kia K5</p><a class="link-arrow" href="{{url:comfort-plus}}">Машины тарифа {{i:arrow}}</a></article>
+        <article class="cls"><p class="cls__num">04</p><h3>Бизнес</h3><p>Премиальный седан для поездок бизнес-класса. Первая неделя аренды — по сниженной цене.</p><p class="cls__models"><b>Модели:</b> Hongqi H5</p><a class="link-arrow" href="{{url:business}}">Машины тарифа {{i:arrow}}</a></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="faq-wrap">
+        <div class="why__sticky">
+          <p class="eyebrow" data-reveal>Вопросы и ответы</p>
+          <h2 class="h2" id="faq-title" data-split>Об аренде <span class="tone">автомобиля</span></h2>
+          <a class="btn btn--outline" href="index.html#faq" data-reveal>Все вопросы {{arrow}}</a>
+        </div>
+        <div class="faq" data-stagger="fade" data-step="60">
+          <details>
+            <summary>Что нужно для оформления?<span class="faq__plus" aria-hidden="true"></span></summary>
+            <div class="faq__body"><p>Водительское удостоверение, паспорт, сертификат КИС «АРТ», СНИЛС и справка об отсутствии судимости. Иностранным гражданам также нужны регистрация и справки об отсутствии судимости в РФ и в стране гражданства.</p></div>
+          </details>
+          <details>
+            <summary>Будет ли меняться стоимость аренды?<span class="faq__plus" aria-hidden="true"></span></summary>
+            <div class="faq__body"><p>Нет. Мы заключаем с вами договор, в котором фиксируется стоимость аренды.</p></div>
+          </details>
+          <details>
+            <summary>Можно ли поменять автомобиль или класс?<span class="faq__plus" aria-hidden="true"></span></summary>
+            <div class="faq__body"><p>Да, в любое рабочее время. У нас всегда найдётся то, что вам нужно.</p></div>
+          </details>
+          <details>
+            <summary>Как сдать автомобиль?<span class="faq__plus" aria-hidden="true"></span></summary>
+            <div class="faq__body"><p>Предупредите нас за неделю по электронной почте <a href="mailto:maniatax@yandex.ru" style="text-decoration:underline">maniatax@yandex.ru</a>: укажите ФИО и дату сдачи.</p></div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{{> lead}}
+
+  <!-- ============ SEO TEXT ============ -->
+  <section class="section section--tight section--white" id="about" aria-labelledby="about-title">
+    <div class="container">
+      <div class="seo">
+        <div>
+          <p class="eyebrow" data-reveal>Аренда авто под такси</p>
+          <h2 class="h2" id="about-title" data-split>Цены и условия <span class="tone">аренды</span></h2>
+        </div>
+        <div class="seo__text" data-reveal>
+          <div class="seo__clip" id="seo-clip">
+            <p>В каталоге «Таксимании» — 11 моделей для работы в такси в Москве. Самый доступный вариант — Kia Rio в классе Эконом за 1 600 ₽ в сутки. В Комфорте — Geely Coolray, Kia Optima и электромобиль Evolute i-Pro с запасом хода до 350 км. Самый широкий выбор — в Комфорт+: от FAW Bestune B70 за 2 500 ₽ до Chery Tiggo 8 Pro Max. Для Бизнеса доступен Hongqi H5.</p>
+            <p>Все автомобили не старше 3 лет, выдаются без залога и обслуживаются в сервисе парка. Стоимость фиксируется в договоре и не меняется в течение срока аренды.</p>
+            <h3>Аренда с выкупом</h3>
+            <p>Восемь моделей доступны с выкупом: сроки от 1,5 до 4 лет, платёж — от 2 000 ₽ в сутки. Новинка парка TENET T7 2025 года предлагается только в формате выкупа на 4 года.</p>
+            <h3>Как получить автомобиль</h3>
+            <p>Оставьте заявку или позвоните по номеру +7 (495) 085-16-16 — работаем круглосуточно. Менеджер назначит встречу в офисе на Загородном шоссе, решение по выдаче принимаем за 10 минут, а первый день аренды — бесплатно.</p>
+          </div>
+          <button class="link-arrow seo__toggle" type="button" data-seo-toggle aria-controls="seo-clip" aria-expanded="false"><span data-label>Читать полностью</span>{{i:chevron}}</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{{> contacts}}
+</main>
+
+{{> footer}}
+{{> dialog}}
+
+<script src="assets/js/cars.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

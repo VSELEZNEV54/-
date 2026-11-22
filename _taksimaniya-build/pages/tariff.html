@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ru">
+<head>
+{{> seo-head}}
+</head>
+<body>
+{{> sprite}}
+{{> header}}
+<main id="main">
+  <section class="tariff-page model-hero" aria-labelledby="tariff-title" data-hide-float>
+    {{> film-media}}
+    <div class="container model-hero__content">
+      <div>
+        <nav aria-label="Хлебные крошки"><ol class="crumbs"><li><a href="index.html">Главная</a></li><li><a href="avtopark.html">Автопарк</a></li><li aria-current="page">{{tariff_name}}</li></ol></nav>
+        <h1 class="model-title" id="tariff-title">Машины под такси<br> <span class="accent">«{{tariff_name}}»</span> <span>в Москве</span></h1>
+      </div>
+      <div class="model-hero__offer tariff-offer">
+        <div>
+          <div class="tariff-page__terms"><b>от {{price_day}} ₽<small> / сутки</small></b><span>{{count_models}}</span></div>
+          <p>{{tariff_intro}}</p>
+        </div>
+        <div class="tariff-page__actions"><a class="btn btn--sm" href="#catalog">Смотреть машины {{arrow}}</a><button class="hero__link" type="button" data-enquiry data-tariff="{{catalog_class}}">Заявка на тариф {{i:arrow-ur}}</button></div>
+      </div>
+    </div>
+  </section>
+  {{> catalog}}
+  {{> contacts}}
+</main>
+{{> footer}}
+{{> dialog}}
+<script src="assets/js/cars.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

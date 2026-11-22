@@ -1,0 +1,44 @@
+<dialog class="dialog" id="dlg" aria-label="Окно">
+  <div class="dialog__bar"><button class="dialog__close" type="button" data-close aria-label="Закрыть окно">{{i:close}}</button></div>
+
+  <div class="dialog__inner" data-panel="section" hidden>
+    <h2 class="dialog__title" data-title data-section-title tabindex="-1">Раздел</h2>
+    <div class="dialog__soon">
+      <span class="dialog__soon-icon">{{i:hourglass}}</span>
+      <p data-section-text>Раздел не входит в демо-макет.</p>
+    </div>
+    <div class="dialog__actions">
+      <a class="btn btn--sm" href="avtopark.html">Смотреть автопарк {{arrow}}</a>
+      <button class="btn btn--sm btn--outline btn--plain" type="button" data-close>Понятно</button>
+    </div>
+  </div>
+
+  <div class="dialog__inner" data-panel="enquiry" hidden>
+    <h2 class="dialog__title" data-title tabindex="-1">Оставить заявку</h2>
+    <p class="dialog__text">Менеджер свяжется с вами в ближайшее время и поможет с выбором автомобиля.</p>
+    <div class="dialog__context" data-context hidden></div>
+    <div data-form-box>
+      <form class="form" method="dialog" data-demo-form autocomplete="off" novalidate>
+        <input type="hidden" name="tariff"><input type="hidden" name="schedule"><input type="hidden" name="plan">
+        <div class="form__row">
+          <label class="field"><span class="field__label">Имя</span><input class="input" name="name" required placeholder="Как к вам обращаться" autocomplete="off"><span class="field__error">Укажите имя</span></label>
+          <label class="field"><span class="field__label">Телефон</span><input class="input" type="tel" name="phone" required placeholder="+7 (___) ___-__-__" inputmode="tel" autocomplete="off"><span class="field__error">Введите номер полностью</span></label>
+        </div>
+        <div class="radio-seg" role="radiogroup" aria-label="Формат работы">
+          <label><input type="radio" name="format" value="rent" checked><span>Аренда</span></label>
+          <label><input type="radio" name="format" value="buyout"><span>Аренда с выкупом</span></label>
+        </div>
+        <label class="field"><span class="field__label">Автомобиль</span><select class="select" name="model"><option value="">Пока не выбрал — нужна консультация</option></select></label>
+        <label class="check"><input type="checkbox" name="agree" required><span>Согласен(на) с политикой обработки персональных данных и договором оферты</span></label>
+        <button class="btn btn--block" type="submit">Отправить заявку {{arrow}}</button>
+        <p class="form__demo">Демо-форма: данные никуда не отправляются</p>
+      </form>
+      <div class="form-success" data-success hidden>
+        <div class="form-success__icon">{{i:check}}</div>
+        <h3 data-success-title tabindex="-1">Заявка принята — это демо</h3>
+        <p>В рабочей версии заявка уйдёт менеджеру. Сейчас данные не отправлены и не сохранены.</p>
+        <button class="btn btn--dark btn--plain" type="button" data-close>Закрыть</button>
+      </div>
+    </div>
+  </div>
+</dialog>

@@ -1,0 +1,38 @@
+<section class="section section--tight" id="lead" aria-labelledby="lead-title" data-hide-float>
+  <div class="container">
+    <div class="leadform">
+      <div class="lead__visual on-dark" data-reveal="clip">
+        <img src="assets/img/garage.webp" alt="Автомобили Таксимании на парковке парка" loading="lazy" width="1600" height="1067" data-parallax="0.08" data-scale="1.1">
+        <p class="eyebrow">Консультация</p>
+        <h2 class="h2" id="lead-title" data-split>Подберём машину <span class="tone">под ваш график</span></h2>
+        <p>Оставьте заявку — менеджер свяжется с вами, ответит на вопросы и назначит удобное время встречи в офисе.</p>
+      </div>
+      <div class="lead__panel" data-reveal>
+        <h3 class="h3">Оставить заявку</h3>
+        <p>Решение по выдаче автомобиля — в течение 10 минут после встречи.</p>
+        <div data-form-box>
+          <form class="form" method="dialog" data-demo-form autocomplete="off" novalidate>
+            <div class="form__row">
+              <label class="field"><span class="field__label">Имя</span><input class="input" name="name" required placeholder="Как к вам обращаться" autocomplete="off"><span class="field__error">Укажите имя</span></label>
+              <label class="field"><span class="field__label">Телефон</span><input class="input" type="tel" name="phone" required placeholder="+7 (___) ___-__-__" inputmode="tel" autocomplete="off"><span class="field__error">Введите номер полностью</span></label>
+            </div>
+            <div class="radio-seg" role="radiogroup" aria-label="Формат работы">
+              <label><input type="radio" name="format" value="rent" checked><span>Аренда</span></label>
+              <label><input type="radio" name="format" value="buyout"><span>Аренда с выкупом</span></label>
+            </div>
+            <label class="field"><span class="field__label">Автомобиль</span><select class="select" name="model"><option value="">Пока не выбрал — нужна консультация</option></select></label>
+            <label class="check"><input type="checkbox" name="agree" required><span>Согласен(на) с <button type="button" data-section="Политика обработки персональных данных">политикой обработки персональных данных</button> и <button type="button" data-section="Публичная оферта">договором оферты</button></span></label>
+            <button class="btn btn--block" type="submit">Отправить заявку {{arrow}}</button>
+            <p class="form__demo">Демо-форма: данные никуда не отправляются</p>
+          </form>
+          <div class="form-success" data-success hidden>
+            <div class="form-success__icon">{{i:check}}</div>
+            <h3 data-success-title tabindex="-1">Заявка принята — это демо</h3>
+            <p>В рабочей версии заявка уйдёт менеджеру. Сейчас данные не отправлены и не сохранены.</p>
+            <button class="btn btn--dark btn--plain" type="button" data-form-again>Заполнить ещё раз</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

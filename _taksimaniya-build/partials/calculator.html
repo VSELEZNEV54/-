@@ -1,0 +1,47 @@
+<!-- ============ CALCULATOR ============ -->
+  <section class="section" id="calc" aria-labelledby="calc-title" data-hide-float>
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow" data-reveal>Калькулятор дохода</p>
+          <h2 class="h2" id="calc-title" data-split>Сколько можно <span class="tone">заработать за&nbsp;неделю</span></h2>
+        </div>
+        <p class="sec-head__side" data-reveal style="--d:150">{{calc_intro}}</p>
+      </div>
+      <div class="calc" data-calc data-model="{{calc_model}}">
+        <div class="calc__panel" data-reveal>
+          <div class="calc__group">
+            {{calc_controls}}
+          </div>
+          <div class="calc__group">
+            <label class="calc__label" for="calc-days">Рабочих дней в неделю <output data-out="days" for="calc-days">6</output></label>
+            <input class="range" id="calc-days" type="range" name="days" min="1" max="7" step="1" value="6">
+            <div class="range__scale" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span></div>
+          </div>
+          <div class="calc__group">
+            <label class="calc__label" for="calc-hours">Часов в день <output data-out="hours" for="calc-hours">10</output></label>
+            <input class="range" id="calc-hours" type="range" name="hours" min="4" max="16" step="1" value="10">
+            <div class="range__scale" aria-hidden="true"><span>4 ч</span><span>8 ч</span><span>12 ч</span><span>16 ч</span></div>
+          </div>
+          <ul class="why__chips" style="margin-top:32px">
+            <li>{{i:calendar}}Гибкий график</li>
+            <li>{{i:shield}}Работа официально</li>
+            <li>{{i:wallet}}Моментальный вывод</li>
+          </ul>
+        </div>
+        <div class="calc__result" data-reveal style="--d:120" aria-live="polite">
+          <p class="calc__result-label">За неделю после оплаты авто на тарифе «<span data-out="tariff">{{calc_tariff_name}}</span>»</p>
+          <p class="calc__sum"><span data-out="net">{{calc_net}}</span> ₽</p>
+          <dl class="calc__rows">
+            <div><dt>Выручка с заказов</dt><dd data-out="gross">{{calc_gross}} ₽</dd></div>
+            <div><dt>Платёж за автомобиль за 7 дней</dt><dd data-out="rent">{{calc_rent}} ₽</dd></div>
+            <div><dt>Примерно в месяц</dt><dd data-out="month">{{calc_month}} ₽</dd></div>
+          </dl>
+          <div class="calc__foot">
+            <button class="btn" type="button" data-enquiry data-calc-cta {{calc_cta_attrs}}><span data-calc-label>{{calc_cta_label}}</span> {{arrow}}</button>
+            <p class="calc__note">Пример по условной выручке за час. Расходы на топливо, комиссии и налоги в расчёт не входят.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

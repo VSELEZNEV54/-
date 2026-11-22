@@ -1,0 +1,55 @@
+<section class="section section--tight quiz-section" id="quiz" aria-labelledby="quiz-title" data-hide-float>
+  <div class="container">
+    <div class="quiz" data-quiz>
+      <div class="quiz__intro">
+        <img src="assets/img/interior.webp" alt="" loading="lazy" width="1200" height="800">
+        <div>
+          <p class="quiz__kicker">Персональный подбор</p>
+          <h2 class="h2" id="quiz-title">Подберём авто<br>под ваш график</h2>
+          <p>Ответьте на три вопроса. Покажем модель, ежедневный платёж и примерный заработок за неделю.</p>
+        </div>
+      </div>
+      <div class="quiz__panel">
+        <noscript><a class="btn" href="avtopark.html">Выбрать автомобиль в каталоге {{arrow}}</a></noscript>
+        <form data-quiz-form hidden>
+          <div class="quiz__progress"><span data-quiz-progress aria-live="polite">Шаг 1 из 3</span><progress value="1" max="3" aria-label="Прогресс подбора"></progress></div>
+          <fieldset data-quiz-step>
+            <legend tabindex="-1">Как хотите работать?</legend>
+            <label class="quiz-choice"><input type="radio" name="format" value="rent" checked><span><b>Аренда</b><small>Машина парка с оплатой за сутки</small></span></label>
+            <label class="quiz-choice"><input type="radio" name="format" value="buyout"><span><b>Аренда с выкупом</b><small>После последнего платежа машина ваша</small></span></label>
+          </fieldset>
+          <fieldset data-quiz-step hidden>
+            <legend tabindex="-1">В каком тарифе?</legend>
+            <div class="quiz__classes">{{quiz_classes}}</div>
+          </fieldset>
+          <fieldset data-quiz-step hidden>
+            <legend tabindex="-1">Сколько смен в неделю?</legend>
+            <label class="quiz__days" for="quiz-days">Рабочих дней <output for="quiz-days" data-quiz-days>5</output></label>
+            <input id="quiz-days" class="range" type="range" name="days" min="1" max="7" value="5" style="--p:66.67%">
+            <div class="range__scale" aria-hidden="true"><span>1</span><span>4</span><span>7</span></div>
+            <p class="quiz__hint">Для подбора считаем смену по 10 часов. На странице машины можно изменить длительность.</p>
+          </fieldset>
+          <div class="quiz__actions">
+            <button class="link-arrow" type="button" data-quiz-back hidden>Назад</button>
+            <button class="btn btn--sm btn--dark" type="submit"><span data-quiz-next>Далее</span> {{arrow}}</button>
+          </div>
+        </form>
+        <div class="quiz__result" data-quiz-result hidden>
+          <p class="quiz__kicker">Вам подходит</p>
+          <h3 class="h3" data-quiz-name tabindex="-1"></h3>
+          <p data-quiz-summary></p>
+          <dl class="quiz__amounts">
+            <div><dt>Платёж в сутки</dt><dd data-quiz-price></dd></div>
+            <div><dt>После оплаты авто за неделю</dt><dd data-quiz-income></dd></div>
+          </dl>
+          <p class="quiz__hint">Оценка по условной выручке, до затрат на топливо, комиссии и налоги.</p>
+          <div class="quiz__result-links">
+            <button class="btn btn--sm" type="button" data-enquiry data-quiz-apply>Оставить заявку {{arrow}}</button>
+            <a class="link-arrow" data-quiz-model>О машине {{i:arrow-ur}}</a>
+          </div>
+          <button class="quiz__again" type="button" data-quiz-edit>Изменить ответы</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ru">
+<head>
+{{> seo-head}}
+</head>
+<body>
+{{> sprite}}
+{{> header}}
+<main id="main">
+  {{> model-intro}}
+  <section class="section section--tight model-benefits" aria-labelledby="benefits-title">
+    <div class="container">
+      <h2 class="h2" id="benefits-title">Чем удобен {{model_name}}</h2>
+      <div class="model-benefits__grid">{{benefits}}</div>
+    </div>
+  </section>
+  {{> calculator}}
+  <section class="section" aria-labelledby="related-title" data-hide-float>
+    <div class="container">
+      <div class="sec-head"><h2 class="h2" id="related-title">Другие машины парка</h2><a class="link-arrow" href="avtopark.html">Весь автопарк {{i:arrow}}</a></div>
+      <div class="catalog-grid">{{related}}</div>
+    </div>
+  </section>
+  {{> contacts}}
+</main>
+{{> footer}}
+{{> dialog}}
+<script src="assets/js/cars.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

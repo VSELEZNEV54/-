@@ -1,0 +1,27 @@
+<section class="model-hero" aria-labelledby="model-title" data-hide-float>
+  {{> film-media}}
+  <div class="container model-hero__content">
+    <div class="model-hero__heading">{{> car-heading}}</div>
+    <div class="model-hero__offer">
+      <dl class="model-hero__terms" aria-label="Условия для водителя">
+        <div><dt>Тариф</dt><dd><a href="{{class_url}}">{{tariff_name}} {{i:arrow-ur}}</a></dd></div>
+        {{hero_rates}}
+        <div class="model-hero__driver"><dt>Требования к водителю</dt><dd><a href="index.html#requirements">От 21 года · стаж от 3 лет</a></dd></div>
+      </dl>
+      <div class="model-hero__actions">{{hero_actions}}</div>
+    </div>
+  </div>
+</section>
+<section class="section section--tight model-overview" id="about-model" aria-labelledby="overview-title">
+  <div class="container">
+    <h2 class="h2" id="overview-title">О модели {{model_name}}</h2>
+    <div class="detail model-summary">
+      {{> car-gallery}}
+      <div class="detail__info">
+        <h3 class="h3">Характеристики</h3>
+        <dl class="detail__specs">{{specs}}</dl>
+        {{offer_details}}
+      </div>
+    </div>
+  </div>
+</section>

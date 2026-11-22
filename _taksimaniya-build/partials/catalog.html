@@ -1,0 +1,58 @@
+<!-- ============ CATALOG ============ -->
+  <section class="section" id="catalog" aria-labelledby="catalog-title" data-hide-float style="padding-top:0">
+    <div class="container">
+      <h2 class="sr-only" id="catalog-title">Каталог автомобилей</h2>
+      <div class="filters" role="region" aria-label="Фильтры каталога">
+        <div class="filters__bar">
+          <div class="filters__group" role="group" aria-label="Формат">
+            <button class="chip" type="button" data-filter="format" data-value="all" aria-pressed="true">Все форматы</button>
+            <button class="chip" type="button" data-filter="format" data-value="rent" aria-pressed="false">Аренда</button>
+            <button class="chip" type="button" data-filter="format" data-value="buyout" aria-pressed="false">С выкупом</button>
+          </div>
+          <span class="filters__sep" aria-hidden="true"></span>
+          <div class="filters__group" role="group" aria-label="Тариф">
+            {{tariff_filters}}
+          </div>
+          <span class="filters__sep" aria-hidden="true"></span>
+          <div class="filters__group" role="group" aria-label="Кузов и топливо">
+            <button class="chip" type="button" data-filter="body" data-value="sedan" aria-pressed="false">Седан</button>
+            <button class="chip" type="button" data-filter="body" data-value="crossover" aria-pressed="false">Кроссовер</button>
+            <button class="chip" type="button" data-filter="fuel" data-value="electro" aria-pressed="false">{{i:bolt}}Электро</button>
+          </div>
+          <label class="filters__sort"><span class="sr-only">Сортировка</span>
+            <select class="select" id="sort">
+              <option value="popular">Сначала популярные</option>
+              <option value="cheap">Сначала дешевле</option>
+              <option value="expensive">Сначала дороже</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <div class="catalog-meta">
+        <p class="catalog-meta__count" id="catalog-count" aria-live="polite">{{catalog_count}}</p>
+        <button class="catalog-meta__reset" type="button" data-reset hidden>{{i:close}}Сбросить фильтры</button>
+      </div>
+
+      <div class="catalog-grid" id="catalog-grid" data-class="{{catalog_class}}">
+      {{catalog_cards}}
+        <aside class="promo-card" data-promo>
+          <div>
+            <p class="eyebrow" style="color:rgba(255,255,255,.8)">Персональный подбор</p>
+            <p class="h3">Не нашли подходящую машину?</p>
+            <p>Расскажите о тарифе и графике — подберём автомобиль из наличия и назначим встречу в офисе.</p>
+          </div>
+          <button class="btn btn--light" type="button" data-enquiry data-heading="Подобрать автомобиль" {{catalog_enquiry}} style="margin-top:28px">Подобрать авто {{arrow}}</button>
+        </aside>
+      </div>
+      <div class="empty" id="catalog-empty" hidden>
+        <span class="empty__icon">{{i:search}}</span>
+        <p class="h3">Нет машин с такими параметрами</p>
+        <p>Измените фильтры или сбросьте их — либо оставьте заявку, и мы подберём похожий вариант.</p>
+        <div class="dialog__actions" style="justify-content:center;margin-top:0">
+          <button class="btn btn--dark btn--plain" type="button" data-reset>Сбросить фильтры</button>
+          <button class="btn btn--outline btn--plain" type="button" data-enquiry data-heading="Подобрать автомобиль" {{catalog_enquiry}}>Подобрать с менеджером</button>
+        </div>
+      </div>
+    </div>
+  </section>
