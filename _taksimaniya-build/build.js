@@ -1,5 +1,6 @@
 // Статические страницы парка. Каталог и условия программ берём из одного набора данных.
 const fs = require("node:fs");
+const { createHash } = require("node:crypto");
 const path = require("node:path");
 const vm = require("node:vm");
 
@@ -204,7 +205,11 @@ const homeCars = [
   ...cars.filter(car => car.id === featuredHomeId),
   ...cars.filter(car => car.id !== featuredHomeId).sort((a, b) => regularDailyPrice(b) - regularDailyPrice(a))
 ];
-const fleetFilm = { ...filmFiles("fleet-drive", "assets/img"), mobileSrc: "assets/video/taksimaniya-drive-mobile.mp4" };
+const fleetFiles = { ...filmFiles("fleet-drive", "assets/img"), mobileSrc: "assets/video/taksimaniya-drive-mobile.mp4" };
+const fleetFilm = Object.fromEntries(Object.entries(fleetFiles).map(([key, file]) => {
+  const digest = createHash("sha256").update(fs.readFileSync(path.join(OUT, file))).digest("hex");
+  return [key, `${file}?v=${digest.slice(0, 12)}`];
+}));
 add("index.html", "index", {
   ...calcVars(), ...filmVars(fleetFilm), cur: "home", fleet_count: models(cars.length),
   fleet_cards: cardsHtml(homeCars, true),
